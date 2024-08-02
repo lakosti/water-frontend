@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import Loader from "../Loader/Loader.jsx";
+import css from "./SharedLayout.module.css";
 
 const SharedLayout = ({ children }) => {
   return (

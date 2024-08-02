@@ -18,7 +18,7 @@ const handleSubmit = () => {
   // actions.resetForm();
 };
 
-const SignInForm = () => {
+const SignUpForm = () => {
   return (
     <>
       <Formik initialValues={initialValue} onSubmit={handleSubmit}>
@@ -31,10 +31,14 @@ const SignInForm = () => {
             <span>Password</span>
             <Field type="email" placeholder="Enter your password" name="email" />
           </label>
-          <button type="submit">Sign In</button>
+          <label>
+            <span>Repeat password</span>
+            <Field type="email" placeholder="Repeat password" name="email" />
+          </label>
+          <button type="submit">Sign Up</button>
           <div>
-            <p>Don’t have an account?</p>
-            <NavLink to="/signup">Sign Up</NavLink>
+            <p>Already have account?</p>
+            <NavLink to="/signin">Sign In</NavLink>
           </div>
         </Form>
       </Formik>
@@ -42,4 +46,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default SignUpForm;
