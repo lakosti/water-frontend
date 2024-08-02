@@ -1,7 +1,9 @@
+import { NavLink } from "react-router-dom";
+
 const Logo = () => {
   return (
     <>
-      <a href="">AquaTrack</a>
+      <NavLink to="/">AquaTrack</NavLink>
     </>
   );
 };

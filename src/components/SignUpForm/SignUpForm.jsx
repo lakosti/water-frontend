@@ -29,11 +29,11 @@ const SignUpForm = () => {
           </label>
           <label>
             <span>Password</span>
-            <Field type="email" placeholder="Enter your password" name="email" />
+            <Field type="password" placeholder="Enter your password" name="password" />
           </label>
           <label>
             <span>Repeat password</span>
-            <Field type="email" placeholder="Repeat password" name="email" />
+            <Field type="password" placeholder="Repeat password" name="password" />
           </label>
           <button type="submit">Sign Up</button>
           <div>

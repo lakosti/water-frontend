@@ -29,12 +29,14 @@ const SignInForm = () => {
           </label>
           <label>
             <span>Password</span>
-            <Field type="email" placeholder="Enter your password" name="email" />
+            <Field type="password" placeholder="Enter your password" name="password" />
           </label>
           <button type="submit">Sign In</button>
           <div>
             <p>Don’t have an account?</p>
             <NavLink to="/signup">Sign Up</NavLink>
+            <p>Forgot your password?</p>
+            <NavLink to="/reset">Reset password</NavLink>
           </div>
         </Form>
       </Formik>
