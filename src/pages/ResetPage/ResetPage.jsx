@@ -1,9 +1,12 @@
+import AuthTitle from "../../components/AuthTitle/AuthTitle.jsx";
 import ResetForm from "../../components/ResetForm/ResetForm.jsx";
+import Logo from "../../components/Logo/Logo.jsx";
 
 const ResetPage = () => {
   return (
     <div>
-      <h1>Reset your password</h1>
+      <Logo />
+      <AuthTitle>Reset your password</AuthTitle>
       <ResetForm />
     </div>
   );
