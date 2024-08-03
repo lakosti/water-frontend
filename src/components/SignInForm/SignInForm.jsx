@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import * as Yup from "yup";
 import { selectIsLoading } from "../../redux/auth/selectors.js";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import { logIn } from "../../redux/auth/operations.js";
 
 const initialValue = {
   email: "",
@@ -21,16 +23,19 @@ const SignInForm = () => {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = () => {
-    // dispatch(logIn(values))
-    //   .unwrap()
-    //   .then(() => {
-    //     toast.success("Successfully logged in");
-    //   })
-    //   .catch(() => {
-    //     toast.error("Incorrect email or password");
-    //   });
-    // actions.resetForm();
+  const handelClickPassword = () => {
+    setShowPassword((prevState) => !prevState);
+  };
+  const handleSubmit = (values, actions) => {
+    dispatch(logIn(values))
+      .unwrap()
+      .then(() => {
+        toast.success("Successfully logged in");
+      })
+      .catch(() => {
+        toast.error("Incorrect email or password");
+      });
+    actions.resetForm();
   };
   return (
     <>
@@ -39,23 +44,34 @@ const SignInForm = () => {
         validationSchema={validationSchemas}
         onSubmit={handleSubmit}
       >
-        <Form>
-          <label>
-            <span>Email</span>
-            <Field type="email" placeholder="Enter your email" name="email" />
-          </label>
-          <label>
-            <span>Password</span>
-            <Field type="password" placeholder="Enter your password" name="password" />
-          </label>
-          <button type="submit">Sign In</button>
-          <div>
-            <p>Don’t have an account?</p>
-            <NavLink to="/signup">Sign Up</NavLink>
-            <p>Forgot your password?</p>
-            <NavLink to="/reset">Reset password</NavLink>
-          </div>
-        </Form>
+        {({ isValid, dirty }) => (
+          <Form>
+            <label>
+              <span>Email</span>
+              <Field type="email" placeholder="Enter your email" name="email" />
+            </label>
+            <label>
+              <span>Password</span>
+              <Field
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                name="password"
+              />
+              <button type="button" onClick={handelClickPassword}>
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </label>
+            <button disabled={!(isValid && dirty)} type="submit">
+              {isLoading ? "Loading" : "Sign In"}
+            </button>
+            <div>
+              <p>Don’t have an account?</p>
+              <NavLink to="/signup">Sign Up</NavLink>
+              <p>Forgot your password?</p>
+              <NavLink to="/reset">Reset password</NavLink>
+            </div>
+          </Form>
+        )}
       </Formik>
     </>
   );
