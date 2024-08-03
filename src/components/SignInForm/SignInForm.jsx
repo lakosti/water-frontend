@@ -1,11 +1,12 @@
 import { Field, Formik, Form } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import * as Yup from "yup";
 import { selectIsLoading } from "../../redux/auth/selectors.js";
 import { useState } from "react";
-import toast from "react-hot-toast";
 import { logIn } from "../../redux/auth/operations.js";
+import * as Yup from "yup";
+import toast from "react-hot-toast";
+import css from "./SignInForm.module.css";
 
 const initialValue = {
   email: "",
@@ -45,30 +46,44 @@ const SignInForm = () => {
         onSubmit={handleSubmit}
       >
         {({ isValid, dirty }) => (
-          <Form>
-            <label>
-              <span>Email</span>
-              <Field type="email" placeholder="Enter your email" name="email" />
-            </label>
-            <label>
-              <span>Password</span>
+          <Form className={css.SignInForm}>
+            <label className={css.SignInLabel}>
+              <span className={css.SignInName}>Email</span>
               <Field
-                type={showPassword ? "text" : "password"}
-                placeholder="Enter your password"
-                name="password"
+                className={css.SignInInput}
+                type="email"
+                placeholder="Enter your email"
+                name="email"
               />
-              <button type="button" onClick={handelClickPassword}>
-                {showPassword ? "Hide" : "Show"}
-              </button>
             </label>
-            <button disabled={!(isValid && dirty)} type="submit">
-              {isLoading ? "Loading" : "Sign In"}
+            <label className={css.SignInLabel}>
+              <span className={css.SignInName}>Password</span>
+              <div className={css.inputWrap}>
+                <Field
+                  className={css.SignInInput}
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter your password"
+                  name="password"
+                />
+                <button className={css.SignInCheckbox} type="button" onClick={handelClickPassword}>
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
+            </label>
+            <button className={css.SignInBtn} disabled={!(isValid && dirty)} type="submit">
+              {isLoading ? "Loading" : <span className={css.SignInBtnText}>Sign In</span>}
             </button>
-            <div>
+            <div className={css.SignInText}>
               <p>Don’t have an account?</p>
-              <NavLink to="/signup">Sign Up</NavLink>
-              <p>Forgot your password?</p>
-              <NavLink to="/forget">Reset password</NavLink>
+              <NavLink className={css.SignInLink} to="/signup">
+                Sign Up
+              </NavLink>
+              <div className={css.SignInText}>
+                <p>Forget your password?</p>
+                <NavLink className={css.SignInLink} to="/forget">
+                  Reset password
+                </NavLink>
+              </div>
             </div>
           </Form>
         )}

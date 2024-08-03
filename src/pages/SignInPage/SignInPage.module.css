@@ -1,0 +1,13 @@
+.SignInWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+
+  margin: 0 auto;
+  max-width: 343px;
+  height: 780px;
+  background-color: var(--color-main-bg);
+  border-radius: 30px;
+  padding: 16px;
+}
