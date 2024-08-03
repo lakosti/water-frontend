@@ -1,29 +1,46 @@
 import { Field, Form, Formik } from "formik";
+import * as Yup from "yup";
 
 const initialValue = {
-  email: "",
+  password: "",
+  repeatPassword: "",
 };
-const handleSubmit = () => {
-  // dispatch(logIn(values))
-  //   .unwrap()
-  //   .then(() => {
-  //     toast.success("Successfully logged in");
-  //   })
-  //   .catch(() => {
-  //     toast.error("Incorrect email or password");
-  //   });
-  // actions.resetForm();
-};
+const validationSchemas = Yup.object({
+  password: Yup.string().min(6, "Password must be at least 6 characters").required("Required"),
+  repeatPassword: Yup.string()
+    .oneOf([Yup.ref("password"), null], "Passwords do not match")
+    .required("Required"),
+});
+
 const ResetForm = () => {
+  const handleSubmit = () => {
+    // dispatch(resetPassword(values))
+    //   .unwrap()
+    //   .then(() => {
+    //     toast.success("Successfully logged in");
+    //   })
+    //   .catch(() => {
+    //     toast.error("Incorrect email or password");
+    //   });
+    // actions.resetForm();
+  };
   return (
     <>
-      <Formik initialValues={initialValue} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={initialValue}
+        validationSchema={validationSchemas}
+        onSubmit={handleSubmit}
+      >
         <Form>
           <label>
-            <span>Enter your email</span>
-            <Field type="email" placeholder="Enter your email" name="email" />
+            <span>Enter new password</span>
+            <Field type="passwprd" placeholder="Enter your password" name="email" />
           </label>
-          <button type="submit"> Send</button>
+          <label>
+            <span>Repeat your new password</span>
+            <Field type="password" placeholder="Repeat your email" name="repeatPassword" />
+          </label>
+          <button type="submit">Send</button>
         </Form>
       </Formik>
     </>
