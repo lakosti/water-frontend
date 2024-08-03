@@ -68,7 +68,7 @@ const SignInForm = () => {
               <p>Don’t have an account?</p>
               <NavLink to="/signup">Sign Up</NavLink>
               <p>Forgot your password?</p>
-              <NavLink to="/reset">Reset password</NavLink>
+              <NavLink to="/forget">Reset password</NavLink>
             </div>
           </Form>
         )}
