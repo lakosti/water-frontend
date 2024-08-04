@@ -55,34 +55,44 @@ const SignUpForm = () => {
         validationSchema={validationSchemas}
         onSubmit={handleSubmit}
       >
-        {({ isValid, dirty }) => (
+        {({ isValid, dirty, errors, touched }) => (
           <Form className={css.SignUpForm}>
             <label className={css.SignUpLabel}>
               <span className={css.SignUpName}>Name</span>
               <Field
-                className={css.SignUpInput}
+                className={`${css.SignUpInput} ${errors.name && touched.name ? css.error : ""}`}
                 type="text"
                 placeholder="Enter your name"
                 name="name"
               />
               <ErrorMessage className={css.SignUpError} name="name" component="div" />
             </label>
-            <label>
-              <span>Email</span>
-              <Field type="email" placeholder="Enter your email" name="email" />
-              <ErrorMessage name="email" component="div" />
-            </label>
-            <label>
-              <span>Password</span>
+            <label className={css.SignUpLabel}>
+              <span className={css.SignUpName}>Email</span>
               <Field
-                type={showPassword ? "text" : "password"}
-                placeholder="Enter your password"
-                name="password"
+                className={`${css.SignUpInput} ${errors.email && touched.email ? css.error : ""}`}
+                type="email"
+                placeholder="Enter your email"
+                name="email"
               />
-              <ErrorMessage name="password" component="div" />
-              <button type="button" onClick={handelClickPassword}>
-                {showPassword ? "Hide" : "Show"}
-              </button>
+              <ErrorMessage className={css.SignUpError} name="email" component="div" />
+            </label>
+            <label className={css.SignUpLabel}>
+              <span className={css.SignUpName}>Password</span>
+              <div className={css.inputWrap}>
+                <Field
+                  className={`${css.SignUpInput} ${
+                    errors.password && touched.password ? css.error : ""
+                  }`}
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter your password"
+                  name="password"
+                />
+                <button className={css.SignUpCheckbox} type="button" onClick={handelClickPassword}>
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
+              <ErrorMessage className={css.SignUpError} name="password" component="div" />
               {/* {showPassword ? (
               <button type="button" onClick={handelClickPassword}>
                 Hide
@@ -93,24 +103,35 @@ const SignUpForm = () => {
               </button>
             )} */}
             </label>
-            <label>
-              <span>Repeat password</span>
-              <Field
-                type={showRepeatPassword ? "text" : "password"}
-                placeholder="Repeat password"
-                name="repeatPassword"
-              />
-              <ErrorMessage name="repeatPassword" component="div" />
-              <button type="button" onClick={handelClickRepeatPassword}>
-                {showRepeatPassword ? "Hide" : "Show"}
-              </button>
+            <label className={css.SignUpLabel}>
+              <span className={css.SignUpName}>Repeat password</span>
+              <div className={css.inputWrap}>
+                <Field
+                  className={`${css.SignUpInput} ${
+                    errors.repeatPassword && touched.repeatPassword ? css.error : ""
+                  }`}
+                  type={showRepeatPassword ? "text" : "password"}
+                  placeholder="Repeat password"
+                  name="repeatPassword"
+                />
+                <button
+                  className={css.SignUpCheckbox}
+                  type="button"
+                  onClick={handelClickRepeatPassword}
+                >
+                  {showRepeatPassword ? "Hide" : "Show"}
+                </button>
+              </div>
+              <ErrorMessage className={css.SignUpError} name="repeatPassword" component="div" />
             </label>
-            <button disabled={!(isValid && dirty)} type="submit">
+            <button className={css.SignUpBtn} disabled={!(isValid && dirty)} type="submit">
               {isLoading ? "Loading..." : "Sign Up"}
             </button>
-            <div>
+            <div className={css.SignUpText}>
               <p>Already have account?</p>
-              <NavLink to="/signin">Sign In</NavLink>
+              <NavLink className={css.SignUpLink} to="/signin">
+                Sign In
+              </NavLink>
             </div>
           </Form>
         )}

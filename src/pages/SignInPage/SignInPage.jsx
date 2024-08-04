@@ -6,12 +6,10 @@ import css from "./SignInPage.module.css";
 const SignInPage = () => {
   return (
     <div>
-      <Logo />
       <div className={css.SignInWrap}>
-        <div className={css.SignInCenter}>
-          <AuthTitle>Sign In</AuthTitle>
-          <SignInForm />
-        </div>
+        <Logo />
+        <AuthTitle>Sign In</AuthTitle>
+        <SignInForm />
       </div>
     </div>
   );

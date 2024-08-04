@@ -1,13 +1,16 @@
 import SignUpForm from "../../components/SignUpForm/SignUpForm.jsx";
 import Logo from "../../components/Logo/Logo.jsx";
 import AuthTitle from "../../components/AuthTitle/AuthTitle.jsx";
+import css from "./SignUpPage.module.css";
 
 const SignUpPage = () => {
   return (
     <div>
-      <Logo />
-      <AuthTitle>Sign Up</AuthTitle>
-      <SignUpForm />
+      <div className={css.SignUpWrap}>
+        <Logo />
+        <AuthTitle>Sign Up</AuthTitle>
+        <SignUpForm />
+      </div>
     </div>
   );
 };
