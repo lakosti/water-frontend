@@ -1,5 +1,6 @@
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
+import css from "./ResetForm.module.css";
 
 const initialValue = {
   password: "",
@@ -31,10 +32,15 @@ const ResetForm = () => {
         validationSchema={validationSchemas}
         onSubmit={handleSubmit}
       >
-        <Form>
-          <label>
-            <span>Enter new password</span>
-            <Field type="passwprd" placeholder="Enter your password" name="email" />
+        <Form className={css.ResetForm}>
+          <label className={css.ResetFormLabel}>
+            <span className={css.ResetFormName}>Enter new password</span>
+            <Field
+              className={css.ResetFormInput}
+              type="passwprd"
+              placeholder="Enter your password"
+              name="email"
+            />
           </label>
           <label>
             <span>Repeat your new password</span>
