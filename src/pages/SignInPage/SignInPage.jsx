@@ -7,7 +7,9 @@ const SignInPage = () => {
   return (
     <div>
       <div className={css.SignInWrap}>
-        <Logo />
+        <div className={css.LogoPosition}>
+          <Logo />
+        </div>
         <AuthTitle>Sign In</AuthTitle>
         <SignInForm />
       </div>

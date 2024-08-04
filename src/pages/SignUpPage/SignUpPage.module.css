@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
   /* align-items: center; */
   margin: 0 auto;
   max-width: 343px;
@@ -10,7 +11,12 @@
   border-radius: 30px;
   /* padding-left: 16px;
   padding-right: 16px; */
-  padding: 16px 24px;
+  padding: 16px;
+}
+.LogoPosition {
+  position: absolute;
+  top: 24px;
+  left: 16px;
 }
 @media screen and (min-width: 768px) {
   .SignUpWrap {
@@ -19,11 +25,15 @@
     padding-left: 134px;
     padding-right: 134px;
   }
+  .LogoPosition {
+    top: 32px;
+    left: 32px;
+  }
 }
 @media screen and (min-width: 1440px) {
   .SignUpWrap {
     max-width: 672px;
-    height: 736px;
+    height: 860px;
     padding-left: 118px;
     padding-right: 118px;
   }

@@ -1,9 +1,12 @@
 import { NavLink } from "react-router-dom";
+import css from "./Logo.module.css";
 
 const Logo = () => {
   return (
     <>
-      <NavLink to="/">AquaTrack</NavLink>
+      <NavLink className={css.AuthLogo} to="/">
+        AquaTrack
+      </NavLink>
     </>
   );
 };

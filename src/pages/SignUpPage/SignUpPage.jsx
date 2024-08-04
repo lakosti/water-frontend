@@ -7,7 +7,9 @@ const SignUpPage = () => {
   return (
     <div>
       <div className={css.SignUpWrap}>
-        <Logo />
+        <div className={css.LogoPosition}>
+          <Logo />
+        </div>
         <AuthTitle>Sign Up</AuthTitle>
         <SignUpForm />
       </div>

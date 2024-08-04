@@ -5,17 +5,18 @@
 }
 .inputWrap {
   position: relative;
-  margin-bottom: 32px;
+  /* margin-bottom: 32px; */
 }
 .SignUpLabel {
   display: block;
 }
-.SignUpLabel {
+/* //! can`t remove last margin */
+.SignUpLabel:not(:last-child) {
   margin-bottom: 16px;
 }
-.SignUpLabel:last-child {
-  margin-bottom: 0;
-}
+/* .SignUpLabel:last-child {
+  margin-bottom: 0px;
+} */
 .SignUpInput {
   display: block;
   width: 100%;
