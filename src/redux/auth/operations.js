@@ -1,5 +1,4 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 
 import {
   logInUser,
@@ -7,24 +6,14 @@ import {
   registerUser,
   requestUserInfo,
   updateUserInfo,
-  updateUserPhoto,
 } from "../../api/auth.js";
 import { fetchRefreshToken } from "../../axios.js";
-
-const setAuthHeader = (token) => {
-  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-};
-
-const clearAuthHeader = () => {
-  axios.defaults.headers.common["Authorization"] = "";
-};
 
 //====================== SIGN IN ======================
 
 export const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) => {
   try {
     const res = await logInUser(userData);
-    setAuthHeader(res.data.token);
     return res.data;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response.data.data.message);
@@ -33,26 +22,21 @@ export const logIn = createAsyncThunk("auth/login", async (userData, thunkAPI) =
 
 //====================== SIGN UP ======================
 
-export const signUp = createAsyncThunk("auth/register", async (userData, thunkAPI) => {
+export const signUp = createAsyncThunk("auth/signUp", async (userData, thunkAPI) => {
   try {
     const resSignUp = await registerUser(userData);
-    // const resSignIn = await logInUser(userData);
-    // return resSignIn.data;
-    setAuthHeader(resSignUp.data.token);
-    return resSignUp.data;
+    const resSignIn = await logInUser(userData);
+    return resSignIn.data;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response.data.data.message);
   }
 });
-
-//? ///////////////////////////////////////////////////////
 
 //====================== LOG OUT =======================
 
 export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
     await logOutUser();
-    clearAuthHeader();
   } catch (err) {
     return thunkAPI.rejectWithValue(err);
   }
@@ -82,14 +66,17 @@ export const updateUserProfile = createAsyncThunk("auth/update", async (userData
 
 //=================== UPLOAD PHOTO =====================
 
-export const uploadUserPhoto = createAsyncThunk("users/photo", async (formData, thunkAPI) => {
-  try {
-    const response = await updateUserPhoto(formData);
-    return response.data.photo;
-  } catch (err) {
-    return thunkAPI.rejectWithValue(err.response.data.data.message);
-  }
-});
+// export const uploadUserPhoto = createAsyncThunk(
+//   "users/photo",
+//   async (formData, thunkAPI) => {
+//     try {
+//       const response = await updateUserPhoto(formData);
+//       return response.data.photo;
+//     } catch (err) {
+//       return thunkAPI.rejectWithValue(err.response.data.data.message);
+//     }
+//   }
+// );
 
 //=================== REFRESH TOKEN =====================
 

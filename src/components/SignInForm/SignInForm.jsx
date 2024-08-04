@@ -28,6 +28,7 @@ const SignInForm = () => {
     setShowPassword((prevState) => !prevState);
   };
   const handleSubmit = (values, actions) => {
+    console.log(values);
     dispatch(logIn(values))
       .unwrap()
       .then(() => {
@@ -78,12 +79,12 @@ const SignInForm = () => {
               <NavLink className={css.SignInLink} to="/signup">
                 Sign Up
               </NavLink>
-              <div className={css.SignInText}>
-                <p>Forget your password?</p>
-                <NavLink className={css.SignInLink} to="/forget">
-                  Reset password
-                </NavLink>
-              </div>
+            </div>
+            <div className={css.SignInText}>
+              <p>Forget your password?</p>
+              <NavLink className={css.SignInLink} to="/forget">
+                Reset password
+              </NavLink>
             </div>
           </Form>
         )}

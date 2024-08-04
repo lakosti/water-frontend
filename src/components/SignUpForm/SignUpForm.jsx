@@ -39,7 +39,6 @@ const SignUpForm = () => {
 
   const handleSubmit = (values, actions) => {
     delete values.repeatPassword;
-
     try {
       dispatch(signUp(values));
     } catch (error) {

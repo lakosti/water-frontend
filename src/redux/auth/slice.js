@@ -1,14 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { INITIAL_STATE } from "./initialState";
-import {
-  getUserInfo,
-  logIn,
-  logOut,
-  refreshToken,
-  signUp,
-  updateUserProfile,
-  uploadUserPhoto,
-} from "./operations";
+import { getUserInfo, logIn, logOut, refreshToken, signUp, updateUserProfile } from "./operations";
 
 const authSlice = createSlice({
   name: "auth",
@@ -32,6 +24,8 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+
+      ////////////////////////////////////////////////////
       .addCase(signUp.pending, (state, action) => {
         state.isLoading = true;
         state.errorMessage = null;
@@ -50,6 +44,8 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.errorMessage = action.payload;
       })
+
+      ////////////////////////////////////////////////////
       .addCase(logIn.pending, (state, action) => {
         state.isLoading = true;
         state.errorMessage = null;
@@ -113,20 +109,20 @@ const authSlice = createSlice({
       })
 
       ////////////////////////////////////////////////////
-      .addCase(uploadUserPhoto.pending, (state, action) => {
-        state.isLoadingPhoto = true;
-        state.errorMessage = null;
-        state.successMessage = null;
-      })
-      .addCase(uploadUserPhoto.fulfilled, (state, action) => {
-        state.isLoadingPhoto = false;
-        state.successMessage = "Photo updated";
-        state.user.photo = action.payload;
-      })
-      .addCase(uploadUserPhoto.rejected, (state, action) => {
-        state.isLoadingPhoto = false;
-        state.errorMessage = "Something went wrong, try again later";
-      })
+      //   .addCase(uploadUserPhoto.pending, (state, action) => {
+      //     state.isLoadingPhoto = true;
+      //     state.errorMessage = null;
+      //     state.successMessage = null;
+      //   })
+      //   .addCase(uploadUserPhoto.fulfilled, (state, action) => {
+      //     state.isLoadingPhoto = false;
+      //     state.successMessage = "Photo updated";
+      //     state.user.photo = action.payload;
+      //   })
+      //   .addCase(uploadUserPhoto.rejected, (state, action) => {
+      //     state.isLoadingPhoto = false;
+      //     state.errorMessage = "Something went wrong, try again later";
+      //   })
       //////
       .addCase(refreshToken.pending, (state) => {
         state.isLoggedIn = false;

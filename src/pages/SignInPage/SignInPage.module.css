@@ -3,11 +3,28 @@
   flex-direction: column;
   justify-content: center;
   /* align-items: center; */
-
   margin: 0 auto;
   max-width: 343px;
   height: 780px;
   background-color: var(--color-main-bg);
   border-radius: 30px;
-  padding: 16px;
+  /* padding-left: 16px;
+  padding-right: 16px; */
+  padding: 16px 24px;
+}
+@media screen and (min-width: 768px) {
+  .SignInWrap {
+    max-width: 704px;
+    height: 960px;
+    padding-left: 134px;
+    padding-right: 134px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .SignInWrap {
+    max-width: 672px;
+    height: 736px;
+    padding-left: 118px;
+    padding-right: 118px;
+  }
 }
