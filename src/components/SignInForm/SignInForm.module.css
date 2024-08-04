@@ -1,5 +1,4 @@
 .SignInForm {
-  max-width: 311px;
 }
 
 .SignInName {
@@ -27,21 +26,29 @@
   color: var(--color-font-main);
   border-radius: 15px;
 }
+
 .SignInInput:focus {
-  border: 1px solid var(--color-second-bg);
+  border: 1px solid green;
 }
+
+.SignInInput.error {
+  border: 1px solid red;
+}
+
 .SignInInput::placeholder {
   color: rgba(47, 47, 47, 0.6);
+}
+
+.SignInError {
+  font-size: 12px;
+  color: red;
 }
 .SignInCheckbox {
   position: absolute;
   top: 15px;
   right: 5px;
-  /* width: 20px;
-  height: 20px;
-  background-color: transparent;
-  border: none; */
 }
+
 .SignInBtn {
   border-radius: 30px;
   margin-bottom: 16px;
@@ -51,6 +58,12 @@
   border-color: transparent;
   color: var(--color-font-main);
 }
+
+.SignInBtn:disabled {
+  color: var(--color-main-bg);
+  background-color: rgb(170, 195, 170);
+}
+
 .SignInBtnText {
   font-weight: 700;
   line-height: 1.3;
@@ -62,10 +75,13 @@
   color: rgba(47, 47, 47, 0.5);
   align-items: center;
   justify-content: center;
+  margin-bottom: 5px;
 }
+
 .SignInText:first-child {
-  margin-bottom: 8px;
+  margin-bottom: 40px;
 }
+
 .SignInLink {
   font-weight: 700;
   text-decoration: underline;
@@ -73,6 +89,17 @@
 }
 
 @media screen and (min-width: 768px) {
-}
-@media screen and (min-width: 1440px) {
+  .SignInName {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .SignInLabel:first-child {
+    margin-bottom: 20px;
+  }
+  .SignInInput::placeholder {
+    font-size: 16px;
+  }
+  .SignInText {
+    font-size: 16px;
+  }
 }

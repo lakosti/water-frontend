@@ -1,4 +1,4 @@
-import { Field, Formik, Form } from "formik";
+import { Field, Formik, Form, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { selectIsLoading } from "../../redux/auth/selectors.js";
@@ -14,8 +14,8 @@ const initialValue = {
 };
 
 const validationSchemas = Yup.object({
-  email: Yup.string().email("Invalid email address").required("Required"),
-  password: Yup.string().min(6, "Password must be at least 6 characters").required("Required"),
+  email: Yup.string().email("Invalid email address").required("Required*"),
+  password: Yup.string().min(6, "Password must be at least 6 characters").required("Required*"),
 });
 
 const SignInForm = () => {
@@ -46,22 +46,25 @@ const SignInForm = () => {
         validationSchema={validationSchemas}
         onSubmit={handleSubmit}
       >
-        {({ isValid, dirty }) => (
+        {({ isValid, dirty, errors, touched }) => (
           <Form className={css.SignInForm}>
             <label className={css.SignInLabel}>
               <span className={css.SignInName}>Email</span>
               <Field
-                className={css.SignInInput}
+                className={`${css.SignInInput} ${errors.email && touched.email ? css.error : ""}`}
                 type="email"
                 placeholder="Enter your email"
                 name="email"
               />
+              <ErrorMessage className={css.SignInError} name="email" component="div" />
             </label>
             <label className={css.SignInLabel}>
               <span className={css.SignInName}>Password</span>
               <div className={css.inputWrap}>
                 <Field
-                  className={css.SignInInput}
+                  className={`${css.SignInInput} ${
+                    errors.password && touched.password ? css.error : ""
+                  }`}
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter your password"
                   name="password"
@@ -69,6 +72,7 @@ const SignInForm = () => {
                 <button className={css.SignInCheckbox} type="button" onClick={handelClickPassword}>
                   {showPassword ? "Hide" : "Show"}
                 </button>
+                <ErrorMessage className={css.SignInError} name="password" component="div" />
               </div>
             </label>
             <button className={css.SignInBtn} disabled={!(isValid && dirty)} type="submit">

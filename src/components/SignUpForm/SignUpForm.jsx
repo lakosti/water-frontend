@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { selectIsLoading } from "../../redux/auth/selectors.js";
 import { signUp } from "../../redux/auth/operations.js";
+import { useState } from "react";
 // import Loader from "../Loader/Loader.jsx";
 import * as Yup from "yup";
-import { useState } from "react";
+import css from "./SignUpForm.module.css";
 
 const initialValue = {
   name: "",
@@ -55,11 +56,16 @@ const SignUpForm = () => {
         onSubmit={handleSubmit}
       >
         {({ isValid, dirty }) => (
-          <Form>
-            <label>
-              <span>Name</span>
-              <Field type="text" placeholder="Enter your name" name="name" />
-              <ErrorMessage name="name" component="div" />
+          <Form className={css.SignUpForm}>
+            <label className={css.SignUpLabel}>
+              <span className={css.SignUpName}>Name</span>
+              <Field
+                className={css.SignUpInput}
+                type="text"
+                placeholder="Enter your name"
+                name="name"
+              />
+              <ErrorMessage className={css.SignUpError} name="name" component="div" />
             </label>
             <label>
               <span>Email</span>
