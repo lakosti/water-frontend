@@ -9,7 +9,6 @@ import * as Yup from "yup";
 import css from "./SignUpForm.module.css";
 
 const initialValue = {
-  name: "",
   email: "",
   password: "",
   repeatPassword: "",

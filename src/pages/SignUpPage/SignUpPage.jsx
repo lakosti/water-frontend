@@ -1,4 +1,4 @@
-import SignUpForm from "../../components/SignUpForm/SignUpForm.jsx";
+// import SignUpForm from "../../components/SignUpForm/SignUpForm.jsx";
 import Logo from "../../components/Logo/Logo.jsx";
 import AuthTitle from "../../components/AuthTitle/AuthTitle.jsx";
 import css from "./SignUpPage.module.css";
@@ -11,7 +11,7 @@ const SignUpPage = () => {
           <Logo />
         </div>
         <AuthTitle>Sign Up</AuthTitle>
-        <SignUpForm />
+        {/* <SignUpForm /> */}
       </div>
     </div>
   );
