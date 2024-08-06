@@ -1,7 +1,7 @@
 // import SignUpForm from "../../components/SignUpForm/SignUpForm.jsx";
 import Logo from "../../components/Logo/Logo.jsx";
-import AuthTitle from "../../components/AuthTitle/AuthTitle.jsx";
 import css from "./SignUpPage.module.css";
+import RegisterForm from "../../components/RegisterForm/RegisterForm.jsx";
 
 const SignUpPage = () => {
   return (
@@ -10,8 +10,8 @@ const SignUpPage = () => {
         <div className={css.LogoPosition}>
           <Logo />
         </div>
-        <AuthTitle>Sign Up</AuthTitle>
         {/* <SignUpForm /> */}
+        <RegisterForm />
       </div>
     </div>
   );

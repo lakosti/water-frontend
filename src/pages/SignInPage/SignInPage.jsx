@@ -1,7 +1,6 @@
-// import SignInForm from "../../components/SignInForm/SignInForm.jsx";
 import Logo from "../../components/Logo/Logo.jsx";
-import AuthTitle from "../../components/AuthTitle/AuthTitle.jsx";
 import css from "./SignInPage.module.css";
+import LoginForm from "../../components/LoginForm/LoginForm.jsx";
 
 const SignInPage = () => {
   return (
@@ -10,8 +9,8 @@ const SignInPage = () => {
         <div className={css.LogoPosition}>
           <Logo />
         </div>
-        <AuthTitle>Sign In</AuthTitle>
         {/* <SignInForm /> */}
+        <LoginForm />
       </div>
     </div>
   );
