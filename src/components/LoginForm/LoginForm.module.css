@@ -63,7 +63,17 @@
   color: green;
   border-color: var(--color-font-second);
 }
-.formInputValid {
+
+.errorMessageWrapper {
+  position: absolute;
+  top: -8px;
+  right: 0;
+  transform: translateY(-100%);
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 10px;
+  color: red;
 }
 .errorMsg {
   color: red;
@@ -81,6 +91,11 @@
   color: var(--color-font-main);
   border: none;
   margin-bottom: 16px;
+}
+.LoginBtn:disabled {
+  color: var(--color-main-bg);
+  background-color: rgb(170, 195, 170);
+  cursor: auto;
 }
 .LoginChange {
 }
